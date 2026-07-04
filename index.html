@@ -3,44 +3,782 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>青葉整体院 | つらさを相談しやすい整体院LP</title>
-  <meta name="description" content="青葉整体院のサンプルLPです。悩み訴求、料金、予約導線までを1ページに整理しています。">
-  <link rel="stylesheet" href="sample-style.css">
+  <title>青葉整体院 | 初めてでも相談しやすい整体院</title>
+  <meta name="description" content="青葉整体院のサンプルLPです。初回料金、施術の流れ、よくある不安、アクセスを整理し、予約前に確認しやすい構成にしています。">
+  <meta name="theme-color" content="#28584d">
+  <style>
+    :root {
+      --ink: #1f2a27;
+      --soft-ink: #40534d;
+      --muted: #6f7f78;
+      --green: #28584d;
+      --green-light: #e5f2ed;
+      --mint: #f3faf7;
+      --cream: #fbf7ef;
+      --line: #d8e4de;
+      --white: #ffffff;
+      --orange: #b8662d;
+      --shadow: 0 22px 60px rgba(31, 42, 39, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.78;
+      letter-spacing: 0;
+      overflow-x: hidden;
+      word-break: normal;
+      line-break: strict;
+    }
+
+    @supports (word-break: auto-phrase) {
+      body {
+        word-break: auto-phrase;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(216, 228, 222, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav,
+    .container,
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--white);
+      background: var(--green);
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--soft-ink);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-cta {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(110deg, rgba(243, 250, 247, 0.98), rgba(243, 250, 247, 0.86)),
+        radial-gradient(circle at 84% 18%, rgba(40, 88, 77, 0.18), transparent 32%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -150px;
+      bottom: -180px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: rgba(40, 88, 77, 0.08);
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 680px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      align-items: center;
+      gap: 54px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--green);
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 9.5em;
+      margin-bottom: 18px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.16;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .headline-line,
+    .heading-line {
+      display: block;
+      max-width: 100%;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    .hero-lead {
+      max-width: 35em;
+      margin-bottom: 28px;
+      color: var(--soft-ink);
+      font-size: clamp(16px, 2vw, 19px);
+      text-wrap: pretty;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: var(--green);
+      box-shadow: 0 16px 34px rgba(40, 88, 77, 0.25);
+    }
+
+    .button-secondary {
+      color: var(--green);
+      border-color: var(--green);
+      background: var(--white);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .trust-row span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--soft-ink);
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-bottom: 16px;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .first-flow {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .first-flow li {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--mint);
+    }
+
+    .num {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .first-flow strong {
+      display: block;
+      line-height: 1.35;
+    }
+
+    .first-flow span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section.white {
+      background: var(--white);
+    }
+
+    .section.green {
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .section-head {
+      max-width: 45em;
+      margin-bottom: 34px;
+    }
+
+    .label {
+      margin-bottom: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .green .label {
+      color: #d7f4e9;
+    }
+
+    h2 {
+      max-width: 13em;
+      margin-bottom: 12px;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.34;
+      text-wrap: balance;
+    }
+
+    .section-head p,
+    .card p,
+    .profile p,
+    .faq p {
+      color: var(--muted);
+      text-wrap: pretty;
+    }
+
+    .green .section-head p,
+    .green .card p {
+      color: #d7f4e9;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(31, 42, 39, 0.06);
+    }
+
+    .green .card {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.38;
+    }
+
+    .symptom-card {
+      min-height: 100%;
+    }
+
+    .symptom-card::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 4px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    .price-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .price {
+      margin: 8px 0 12px;
+      color: var(--green);
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .price small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid #ead8be;
+      border-radius: 8px;
+      color: #7c4a18;
+      background: #fff8ec;
+      font-size: 14px;
+      font-weight: 800;
+      text-wrap: pretty;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .profile-photo {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 72% 18%, rgba(40, 88, 77, 0.18), transparent 34%),
+        linear-gradient(135deg, #ffffff, #e5f2ed);
+      box-shadow: 0 12px 28px rgba(31, 42, 39, 0.06);
+    }
+
+    .profile-symbol {
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--green);
+      background: var(--white);
+      box-shadow: 0 16px 34px rgba(31, 42, 39, 0.12);
+      font-size: 46px;
+      font-weight: 900;
+    }
+
+    .profile-body {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .flow {
+      display: grid;
+      gap: 14px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .faq button {
+      width: 100%;
+      min-height: 58px;
+      padding: 16px 18px;
+      border: 0;
+      background: var(--white);
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      font-weight: 900;
+    }
+
+    .faq button::after {
+      content: "+";
+      color: var(--green);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .faq.is-open button::after {
+      content: "-";
+    }
+
+    .faq p {
+      display: none;
+      margin: 0;
+      padding: 0 18px 18px;
+    }
+
+    .faq.is-open p {
+      display: block;
+    }
+
+    .access-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-list li {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-list strong {
+      color: var(--green);
+    }
+
+    .map-placeholder {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(40, 88, 77, 0.08), rgba(184, 102, 45, 0.08)),
+        #ffffff;
+      border: 1px solid var(--line);
+      color: var(--soft-ink);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .final-cta {
+      padding: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .final-cta h2 {
+      max-width: 15em;
+    }
+
+    .final-cta p {
+      max-width: 44em;
+      color: #d7f4e9;
+    }
+
+    .site-footer {
+      padding: 30px 0 88px;
+      color: #dce9e4;
+      background: #18352f;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mobile-cta {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner,
+      .profile,
+      .access-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 72px 0;
+      }
+
+      .hero-card {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav,
+      .container,
+      .hero-inner,
+      .footer-inner {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        min-height: 64px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(34px, 9vw, 42px);
+        line-height: 1.18;
+      }
+
+      h2 {
+        max-width: 100%;
+        font-size: clamp(25px, 6.4vw, 31px);
+        line-height: 1.42;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero-lead {
+        font-size: 16px;
+      }
+
+      .card,
+      .hero-card,
+      .profile-body,
+      .flow-step,
+      .final-cta {
+        padding: 20px;
+      }
+
+      .first-flow li,
+      .flow-step {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .info-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        z-index: 60;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .mobile-cta a {
+        min-height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        color: var(--white);
+        background: var(--green);
+        box-shadow: 0 14px 34px rgba(31, 42, 39, 0.22);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .mobile-cta a:last-child {
+        color: var(--green);
+        background: var(--white);
+        border: 1px solid var(--green);
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="sample-header">
-    <nav class="sample-nav" aria-label="メインナビゲーション">
-      <a class="brand" href="https://hacot0600.github.io/test-homepage/works.html">青葉整体院</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a class="brand" href="https://hacot0600.github.io/test-homepage/works.html" aria-label="制作実績へ戻る">
+        <span class="brand-mark">青</span>
+        <span>青葉整体院</span>
+      </a>
       <div class="nav-links">
-        <a href="#worry">悩み</a>
+        <a href="#worry">相談できること</a>
         <a href="#price">料金</a>
-        <a href="#flow">流れ</a>
-        <a class="nav-cta" href="#contact">予約相談</a>
+        <a href="#first">初めての方へ</a>
+        <a href="#access">アクセス</a>
+        <a class="nav-cta" href="#reserve">初回相談</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero green">
+    <section class="hero">
       <div class="hero-inner">
         <div>
           <span class="eyebrow">整体院LPサンプル</span>
-          <h1>その不調を我慢しないための整体院</h1>
-          <p class="hero-lead">肩こり、腰の重さ、姿勢の違和感を初回カウンセリングから確認します。はじめての方でも相談しやすい導線を重視したLPです。</p>
+          <h1>
+            <span class="headline-line">初めてでも</span>
+            <span class="headline-line">相談しやすい整体院</span>
+          </h1>
+          <p class="hero-lead">
+            肩こり、腰の重さ、姿勢の違和感を丁寧に確認します。料金と流れを先に見せるので、予約前に不安を減らせます。
+          </p>
           <div class="actions">
-            <a class="button primary" href="#contact">初回相談を予約する</a>
-            <a class="button blue" href="#price">料金を見る</a>
+            <a class="button button-primary" href="#reserve">初回相談を予約する</a>
+            <a class="button button-secondary" href="#price">料金を見る</a>
+          </div>
+          <div class="trust-row" aria-label="安心材料">
+            <span>初回60分</span>
+            <span>料金を事前表示</span>
+            <span>無理な案内なし</span>
           </div>
         </div>
-        <div class="visual-card">
-          <strong>初回 60分</strong>
-          <p>状態確認、施術、セルフケア提案までを1回で案内します。</p>
-          <ul class="visual-list">
-            <li>当日予約の可否を明記</li>
-            <li>料金を先に見せて不安を減らす</li>
-            <li>よくある質問を予約前に配置</li>
-          </ul>
-        </div>
+
+        <aside class="hero-card" aria-label="初回の流れ">
+          <h2>初回は状態確認から始めます</h2>
+          <ol class="first-flow">
+            <li>
+              <span class="num">1</span>
+              <div>
+                <strong>悩みを聞く</strong>
+                <span>痛みの場所、生活習慣、不安な点を確認します。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">2</span>
+              <div>
+                <strong>姿勢と動きを見る</strong>
+                <span>負担が出やすい姿勢や動きを一緒に確認します。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">3</span>
+              <div>
+                <strong>施術方針を説明する</strong>
+                <span>内容と料金を説明してから施術に進みます。</span>
+              </div>
+            </li>
+          </ol>
+        </aside>
       </div>
     </section>
 
@@ -48,21 +786,38 @@
       <div class="container">
         <div class="section-head">
           <p class="label">Worry</p>
-          <h2>相談前の不安を先に減らします</h2>
-          <p>整体院は「痛そう」「いくらかかるかわからない」という不安が予約の妨げになります。LPでは先に判断材料を出します。</p>
+          <h2>
+            <span class="heading-line">こんな悩みを</span>
+            <span class="heading-line">相談できます</span>
+          </h2>
+          <p>
+            症状名を断定して治すと約束するのではなく、今の状態を確認しながら無理のない進め方を提案します。
+          </p>
         </div>
         <div class="grid">
-          <article class="card">
-            <h3>肩や首がつらい</h3>
-            <p>長時間のデスクワークで固まりやすい箇所を確認し、生活に合わせたケアを提案します。</p>
+          <article class="card symptom-card">
+            <h3>肩こりや首まわり</h3>
+            <p>デスクワークやスマホ操作で固まりやすい箇所を確認します。</p>
           </article>
-          <article class="card">
-            <h3>腰が重い</h3>
-            <p>姿勢や動作のクセを見て、負担が溜まりやすい原因を一緒に整理します。</p>
+          <article class="card symptom-card">
+            <h3>腰の重さ</h3>
+            <p>姿勢や動きのクセを見ながら、負担が溜まりやすい原因を整理します。</p>
           </article>
-          <article class="card">
+          <article class="card symptom-card">
+            <h3>姿勢の違和感</h3>
+            <p>立ち方や座り方を確認し、日常で気をつける点を伝えます。</p>
+          </article>
+          <article class="card symptom-card">
+            <h3>疲れやすさ</h3>
+            <p>身体の緊張や生活リズムを聞きながら、相談内容を整理します。</p>
+          </article>
+          <article class="card symptom-card">
+            <h3>産後の違和感</h3>
+            <p>無理のない範囲で状態を確認します。強い施術は行いません。</p>
+          </article>
+          <article class="card symptom-card">
             <h3>初めてで不安</h3>
-            <p>施術内容、時間、料金、服装を事前に明記し、予約前の迷いを減らします。</p>
+            <p>施術前に流れ、料金、服装、所要時間を説明します。</p>
           </article>
         </div>
       </div>
@@ -72,58 +827,236 @@
       <div class="container">
         <div class="section-head">
           <p class="label">Price</p>
-          <h2>料金は予約前に確認できます</h2>
+          <h2>
+            <span class="heading-line">料金は予約前に</span>
+            <span class="heading-line">確認できます</span>
+          </h2>
+          <p>
+            料金が見えないまま予約する不安を減らすため、初回料金と通常料金を先に表示します。
+          </p>
         </div>
         <div class="grid">
-          <article class="card">
-            <h3>初回整体</h3>
-            <p class="price">4,980円</p>
-            <p>カウンセリング、姿勢確認、施術を含みます。</p>
+          <article class="card price-card">
+            <h3>初回相談整体</h3>
+            <p class="price">4,980円<small>目安 60分</small></p>
+            <p>カウンセリング、状態確認、施術方針の説明を含みます。</p>
           </article>
-          <article class="card">
+          <article class="card price-card">
             <h3>通常整体</h3>
-            <p class="price">6,600円</p>
-            <p>状態に合わせて施術内容を調整します。</p>
+            <p class="price">6,600円<small>目安 45分</small></p>
+            <p>前回の状態を確認しながら、無理のない範囲で進めます。</p>
           </article>
-          <article class="card">
-            <h3>集中ケア</h3>
-            <p class="price">9,900円</p>
+          <article class="card price-card">
+            <h3>集中相談</h3>
+            <p class="price">9,900円<small>目安 75分</small></p>
             <p>複数の悩みをまとめて相談したい方向けです。</p>
           </article>
         </div>
+        <p class="note">
+          この料金はサンプルです。実案件では地域、施術内容、予約方法に合わせて調整します。効果を保証する表現は使いません。
+        </p>
       </div>
     </section>
 
-    <section class="section white" id="flow">
+    <section class="section white" id="first">
       <div class="container">
         <div class="section-head">
-          <p class="label">Flow</p>
-          <h2>予約後の流れを先に見せます</h2>
+          <p class="label">First Visit</p>
+          <h2>
+            <span class="heading-line">初めての方が</span>
+            <span class="heading-line">迷わない流れにします</span>
+          </h2>
+          <p>
+            整体院のLPでは、予約後に何をするのかを先に見せることが重要です。流れが見えると予約前の不安が下がります。
+          </p>
         </div>
-        <div class="grid">
-          <article class="card"><h3>1. 予約</h3><p>希望日時と悩みをフォームから送信します。</p></article>
-          <article class="card"><h3>2. 状態確認</h3><p>姿勢や動作を確認して施術方針を決めます。</p></article>
-          <article class="card"><h3>3. 施術</h3><p>無理のない範囲で施術し、セルフケアも伝えます。</p></article>
+        <div class="flow">
+          <article class="flow-step">
+            <span class="num">1</span>
+            <div>
+              <h3>予約</h3>
+              <p>希望日時と相談内容を送ってください。電話、LINE、フォームに差し替えできます。</p>
+            </div>
+          </article>
+          <article class="flow-step">
+            <span class="num">2</span>
+            <div>
+              <h3>カウンセリング</h3>
+              <p>今の悩み、生活習慣、避けたい施術、不安な点を確認します。</p>
+            </div>
+          </article>
+          <article class="flow-step">
+            <span class="num">3</span>
+            <div>
+              <h3>状態確認</h3>
+              <p>姿勢や動き方を確認し、施術前に方針を説明します。</p>
+            </div>
+          </article>
+          <article class="flow-step">
+            <span class="num">4</span>
+            <div>
+              <h3>施術とセルフケア</h3>
+              <p>施術後に日常で気をつける点を伝えます。強引な継続案内はしません。</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section" id="profile">
       <div class="container">
-        <div class="panel">
-          <h2>まずは相談内容を送ってください</h2>
-          <p>このLPは整体院向けサンプルです。実案件では予約フォームやLINE導線に差し替えます。</p>
-          <a class="button dark" href="https://hacot0600.github.io/test-homepage/works.html">制作実績へ戻る</a>
+        <div class="profile">
+          <div class="profile-photo" aria-hidden="true">
+            <span class="profile-symbol">院</span>
+          </div>
+          <div class="profile-body">
+            <p class="label">Staff</p>
+            <h2>
+              <span class="heading-line">話しやすさを</span>
+              <span class="heading-line">大切にしています</span>
+            </h2>
+            <p>
+              青葉整体院では、施術の前に不安な点を確認します。強い施術が苦手な方、初めて整体を受ける方にも、内容を説明してから進めます。
+            </p>
+            <p>
+              実案件ではここに院長の顔写真、資格、経験、考え方を掲載します。人柄が伝わる紹介は予約前の安心材料になります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green" id="reason">
+      <div class="container">
+        <div class="section-head">
+          <p class="label">Reason</p>
+          <h2>
+            <span class="heading-line">予約前の不安を</span>
+            <span class="heading-line">先に減らします</span>
+          </h2>
+          <p>
+            閲覧者は、施術の上手さだけでなく「ここに行って大丈夫か」を見ています。
+          </p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>料金を隠さない</h3>
+            <p>初回と通常料金を早い段階で見せます。</p>
+          </article>
+          <article class="card">
+            <h3>施術前に説明する</h3>
+            <p>何をするかわからない不安を減らします。</p>
+          </article>
+          <article class="card">
+            <h3>通いやすさを見せる</h3>
+            <p>営業時間、場所、駐車場、予約方法をまとめます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <p class="label">FAQ</p>
+          <h2>
+            <span class="heading-line">予約前によくある</span>
+            <span class="heading-line">不安に答えます</span>
+          </h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq is-open">
+            <button type="button">施術は痛いですか</button>
+            <p>状態を確認しながら無理のない範囲で進めます。痛みが不安な方は予約時に伝えてください。</p>
+          </article>
+          <article class="faq">
+            <button type="button">どんな服装で行けばいいですか</button>
+            <p>動きやすい服装がおすすめです。着替えを用意する場合はここに案内を掲載します。</p>
+          </article>
+          <article class="faq">
+            <button type="button">何分くらいかかりますか</button>
+            <p>初回は状態確認を含めて60分ほどを想定しています。</p>
+          </article>
+          <article class="faq">
+            <button type="button">回数券の勧誘はありますか</button>
+            <p>必要な内容は説明しますが、強引な案内はしません。納得してから判断できます。</p>
+          </article>
+          <article class="faq">
+            <button type="button">予約変更はできますか</button>
+            <p>変更が必要な場合は早めに連絡してください。実案件ではキャンセル規定を明記します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="access">
+      <div class="container">
+        <div class="section-head">
+          <p class="label">Access</p>
+          <h2>
+            <span class="heading-line">通いやすさも</span>
+            <span class="heading-line">予約判断の材料です</span>
+          </h2>
+          <p>
+            Googleマップや検索から来る人は、場所、営業時間、電話番号を確認します。実店舗情報は正確に出します。
+          </p>
+        </div>
+        <div class="access-layout">
+          <div class="card">
+            <ul class="info-list">
+              <li><strong>住所</strong><span>東京都サンプル区青葉町1-2-3</span></li>
+              <li><strong>最寄り</strong><span>青葉駅から徒歩6分</span></li>
+              <li><strong>営業時間</strong><span>平日 10:00-20:00 / 土曜 9:00-17:00</span></li>
+              <li><strong>定休日</strong><span>日曜、祝日</span></li>
+              <li><strong>予約</strong><span>電話、LINE、フォームに対応</span></li>
+            </ul>
+          </div>
+          <div class="map-placeholder">
+            Googleマップ表示エリア<br>
+            実案件では地図を埋め込みます
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green" id="reserve">
+      <div class="container">
+        <div class="final-cta">
+          <p class="label">Reservation</p>
+          <h2>
+            <span class="heading-line">まずは相談内容を</span>
+            <span class="heading-line">送ってください</span>
+          </h2>
+          <p>
+            このページは整体院向けLPの制作実績サンプルです。実案件では電話、LINE、Googleフォーム、予約システムに合わせて導線を設計します。
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="https://hacot0600.github.io/test-homepage/works.html">制作実績へ戻る</a>
+            <a class="button button-secondary" href="#price">料金をもう一度見る</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="footer-inner">
-      <span>青葉整体院 サンプル</span>
+      <span>青葉整体院 サンプルLP</span>
       <span>HACOT WEB portfolio</span>
     </div>
   </footer>
+
+  <div class="mobile-cta" aria-label="スマホ固定メニュー">
+    <a href="#reserve">初回相談</a>
+    <a href="#price">料金</a>
+  </div>
+
+  <script>
+    document.querySelectorAll(".faq button").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.closest(".faq").classList.toggle("is-open");
+      });
+    });
+  </script>
 </body>
 </html>
